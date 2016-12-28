@@ -18,8 +18,6 @@ RUN apk --no-cache update && \
 
 ADD root /
 
-RUN /scripts/configure/apache.sh
-
 WORKDIR /
 
 EXPOSE 80 443
