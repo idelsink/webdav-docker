@@ -2,6 +2,8 @@
 # Start the apache2 web server
 
 # delete old PID file
-rm -f ${APACHE_PIDF}
+if [ -f "${APACHE_PIDF}" ]; then
+    rm "${APACHE_PIDF}"
+fi
 
 httpd "${@}"
