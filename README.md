@@ -1,4 +1,10 @@
 # WebDAV Docker
+[![](https://images.microbadger.com/badges/version/idelsink/webdav.svg)](https://microbadger.com/images/idelsink/webdav)
+[![](https://images.microbadger.com/badges/image/idelsink/webdav.svg)](https://microbadger.com/images/idelsink/webdav)
+[![Docker Automated build](https://img.shields.io/docker/automated/idelsink/webdav.svg)]()  
+[![GitHub stars](https://img.shields.io/github/stars/idelsink/webdav-docker.svg?style=social&label=Star)]()
+[![Docker Stars](https://img.shields.io/docker/stars/idelsink/webdav.svg)]()
+[![Docker Pulls](https://img.shields.io/docker/pulls/idelsink/webdav.svg)]()
 
 A WebDAV docker image.
 
