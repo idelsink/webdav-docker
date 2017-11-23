@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+echo "~~ Configuring WebDAV ~~"
+
+# Include
+. "$(dirname "$0")/../shared.sh"
+
+mkdir -p "${APACHE_WEBDAV_ROOT}"
+
+replaceInFile "\@APACHE_WEBDAV_ROOT\@" "${APACHE_WEBDAV_ROOT}" "/etc/apache2/conf.d/001-webdav.conf"
+replaceInFile "\@APACHE_WEBDAV_AUTH\@" "${APACHE_WEBDAV_AUTH}" "/etc/apache2/conf.d/001-webdav.conf"

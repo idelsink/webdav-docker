@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+echo "~~ First time setup of WebDAV ~~"
+
+# Set password in auth file
+htpasswd -cb "${APACHE_WEBDAV_AUTH}" "${USERNAME:-}" "${PASSWORD:-}"
+chown root:"${APACHE_GROUP}" "${APACHE_WEBDAV_AUTH}"
+chmod 640 "${APACHE_WEBDAV_AUTH}"

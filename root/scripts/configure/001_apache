@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+
+# Include
+. "$(dirname "$0")/../shared.sh"
+
+echo "~~ Configuring apache ~~"
+
+# Create directory's
+mkdir -p "${APACHE_WEB_ROOT}" && chown -R "${APACHE_USER}":"${APACHE_GROUP}" "${APACHE_WEB_ROOT}"
+# PID file path
+mkdir -p "${APACHE_PID_FILE%/*}" && chown -R "${APACHE_USER}":"${APACHE_GROUP}" "${APACHE_PID_FILE%/*}"
+
+# set apache user and group in config file
+HTTPD_CONF="/etc/apache2/httpd.conf"
+replaceInFile "\@APACHE_USER\@" "${APACHE_USER}" "${HTTPD_CONF}"
+replaceInFile "\@APACHE_GROUP\@" "${APACHE_GROUP}" "${HTTPD_CONF}"
