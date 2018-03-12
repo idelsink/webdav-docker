@@ -1,6 +1,6 @@
 FROM alpine:latest
 MAINTAINER Ingmar Delsink https://github.com/idelsink
-LABEL version="1.0.0" \
+LABEL version="1.0.1" \
       description="WebDAV docker image using Linux Alpine"
 
 ENV APACHE_WEB_ROOT=/var/www/localhost \
