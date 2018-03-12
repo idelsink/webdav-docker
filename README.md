@@ -32,7 +32,7 @@ PASSWORD=pass
 ```
 
 ```sh
-docker run --name=webdav -d –env-file env_file -v <path to location>:/webdav -p 80:80 idelsink/webdav
+docker run --name=webdav -d --env-file=./env_file -v <path to location>:/webdav -p 80:80 idelsink/webdav
 ```
 
 ## License
