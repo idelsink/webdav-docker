@@ -10,6 +10,8 @@ ENV APACHE_WEB_ROOT=/var/www/localhost \
     APACHE_USER=apache \
     # The GUI of the Apache user (will be set on first run)
     APACHE_GID= \
+    # Optional extra GID to add to the Apache user
+    APACHE_OPT_GID= \
     APACHE_GROUP=apache \
     APACHE_WEBDAV_ROOT=/webdav \
     APACHE_WEBDAV_AUTH=/etc/apache2/webdav.password

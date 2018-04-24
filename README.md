@@ -37,6 +37,18 @@ docker run --name=webdav -d --env-file=./env_file -v <path to location>:/webdav 
 
 ### Read and write (Experimental)
 
+When the argument `APACHE_OPT_GID` is supplied, a new group is created and the Apache user is added to this group.
+This can be useful to give Apache write access to supplied volume.
+
+Using the following command and with the predicate that the volume to be mounted has at least group write access,
+it's possible to read and write to the webdav volume.
+
+```sh
+docker run --name=webdav -d -e APACHE_OPT_GID=`id -g` -v <path to location>:/webdav:rw -p 80:80 idelsink/webdav
+```
+
+### Read and write with correct UID and GUI (Experimental)
+
 When no `APACHE_GID` or `APACHE_UID` is supplied, the default of the system will be used and nothing will be changed.
 
 Using the `APACHE_GID` and `APACHE_UID` environment vatiables, the `GID` and the `UID` can be set for the Apache user.

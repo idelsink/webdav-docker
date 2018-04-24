@@ -9,6 +9,11 @@ if [ ! -z "${APACHE_GID}" ]; then
     groupmod -g ${APACHE_GID} "${APACHE_GROUP}"
 fi
 
+if [ ! -z "${APACHE_OPT_GID}" ]; then
+    groupadd -g ${APACHE_OPT_GID} "apache_opt_group"
+    usermod -a -G "apache_opt_group" "${APACHE_GROUP}"
+fi
+
 # Make sure to set the correct permissions to the DavLockDB directory (specified in the dav.conf file)
 mkdir -p /var/lib/dav
 chown "${APACHE_USER}":"${APACHE_GROUP}" /var/lib/dav
