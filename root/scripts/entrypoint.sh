@@ -19,5 +19,8 @@ fi
 
 echo "~~ Container date output: $(date) ~~"
 
-echo "~~ Starting apache"
+echo "~~ Starting Apache with the following user and group IDs ~~"
+echo "~~ $(id ${APACHE_USER}) ~~"
+
+
 /scripts/start/apache.sh -DFOREGROUND

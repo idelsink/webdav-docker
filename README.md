@@ -35,6 +35,20 @@ PASSWORD=pass
 docker run --name=webdav -d --env-file=./env_file -v <path to location>:/webdav -p 80:80 idelsink/webdav
 ```
 
+### Read and write (Experimental)
+
+When no `APACHE_GID` or `APACHE_UID` is supplied, the default of the system will be used and nothing will be changed.
+
+Using the `APACHE_GID` and `APACHE_UID` environment vatiables, the `GID` and the `UID` can be set for the Apache user.
+This makes sure that the apache user will have the same UID or GID as the owner of the volume mount.
+
+For example, to make sure that the data in the volume mount will have the same UID and GID as the user running the `docker run` command,
+run the following `docker run` command:
+
+```sh
+docker run --name=webdav -d -e APACHE_UID=`id -u` -e APACHE_GID==`id -g`  -v <path to location>:/webdav -p 80:80 idelsink/webdav
+```
+
 ## License
 
 > You can check out the full license [here](./LICENSE)

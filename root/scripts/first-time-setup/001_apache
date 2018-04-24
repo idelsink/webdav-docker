@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+
+# Set the Apache user and group ID (id if applicable)
+if [ ! -z "${APACHE_UID}" ]; then
+    usermod -u ${APACHE_UID} "${APACHE_USER}"
+fi
+
+if [ ! -z "${APACHE_GID}" ]; then
+    groupmod -g ${APACHE_GID} "${APACHE_GROUP}"
+fi
+
+# Make sure to set the correct permissions to the DavLockDB directory (specified in the dav.conf file)
+mkdir -p /var/lib/dav
+chown "${APACHE_USER}":"${APACHE_GROUP}" /var/lib/dav
