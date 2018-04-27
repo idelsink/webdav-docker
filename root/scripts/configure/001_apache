@@ -9,7 +9,7 @@ echo "~~ Configuring apache ~~"
 mkdir -p "${APACHE_WEB_ROOT}" && chown -R "${APACHE_USER}":"${APACHE_GROUP}" "${APACHE_WEB_ROOT}"
 # PID file path
 mkdir -p "${APACHE_PID_FILE%/*}" && chown -R "${APACHE_USER}":"${APACHE_GROUP}" "${APACHE_PID_FILE%/*}"
-echo "Use: '$USE_SSL'"
+
 # SSL
 if [ "$USE_SSL" = true ]; then
   echo "~~ Using SSL ~~"

@@ -38,16 +38,25 @@ docker run --name=webdav -d --env-file=./env_file -v <path to location>:/webdav 
 Using SSL (you need to have a certificate already):
 
 ```sh
+# Clone the Git repository
+git clone https://github.com/idelsink/webdav-docker.git
+
+# Build an image with SSL
+cd webdav-docker
+docker build . --build-arg USE_SSL=true
+
+# Copy the image name, example output: "Successfully built d2e42d2ed231"
+
+# Run the container
 docker run -d \
  --name=webdav \
- -e USE_SSL=true \
  -e USERNAME=user \
  -e PASSWORD=pass \
  -v /etc/ssl/certs/home-server.pem:/etc/ssl/certs/server.pem \
  -v /etc/ssl/private/home-server.key:/etc/ssl/private/server.key \
  -v /opt/webdav/data:/webdav \
  -p 443:443 \
- idelsink/webdav
+ ImageNameHere
 ```
 
 ## License
