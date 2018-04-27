@@ -1,0 +1,28 @@
+<VirtualHost _default_:443>
+    DocumentRoot @APACHE_WEBDAV_ROOT@
+    ServerName localhost
+    ErrorLog /var/log/apache2/error.log
+    CustomLog /var/log/apache2/access.log combined
+
+    SSLEngine on
+    SSLCertificateFile  /etc/ssl/certs/server.pem
+    SSLCertificateKeyFile /etc/ssl/private/server.key
+
+    <Directory @APACHE_WEBDAV_ROOT@>
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+
+        SSLOptions +StdEnvVars
+    </Directory>
+
+    <Location />
+        DAV On
+        AuthType Basic
+        AuthName "webdav"
+        AuthUserFile @APACHE_WEBDAV_AUTH@
+        Require valid-user
+
+        SSLOptions +StdEnvVars
+    </Location>
+</VirtualHost>

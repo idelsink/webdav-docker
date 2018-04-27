@@ -6,3 +6,8 @@ echo "~~ First time setup of WebDAV ~~"
 htpasswd -cb "${APACHE_WEBDAV_AUTH}" "${USERNAME:-}" "${PASSWORD:-}"
 chown root:"${APACHE_GROUP}" "${APACHE_WEBDAV_AUTH}"
 chmod 640 "${APACHE_WEBDAV_AUTH}"
+
+# DB lock file
+mkdir /var/lib/dav
+touch /var/lib/dav/lockdb
+chown apache:apache -R /var/lib/dav

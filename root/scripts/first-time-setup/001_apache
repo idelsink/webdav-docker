@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+echo "~~ First time setup of Apache ~~"
+
+# Fix permissions
+if [ -f /etc/ssl/private/server.key ]; then
+  chmod 0640 /etc/ssl/private/server.key
+  chmod 0644 /etc/ssl/certs/server.pem
+fi

@@ -35,6 +35,21 @@ PASSWORD=pass
 docker run --name=webdav -d --env-file=./env_file -v <path to location>:/webdav -p 80:80 idelsink/webdav
 ```
 
+Using SSL (you need to have a certificate already):
+
+```sh
+docker run -d \
+ --name=webdav \
+ -e USE_SSL=true \
+ -e USERNAME=user \
+ -e PASSWORD=pass \
+ -v /etc/ssl/certs/home-server.pem:/etc/ssl/certs/server.pem \
+ -v /etc/ssl/private/home-server.key:/etc/ssl/private/server.key \
+ -v /opt/webdav/data:/webdav \
+ -p 443:443 \
+ idelsink/webdav
+```
+
 ## License
 
 > You can check out the full license [here](./LICENSE)

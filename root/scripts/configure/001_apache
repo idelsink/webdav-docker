@@ -9,6 +9,19 @@ echo "~~ Configuring apache ~~"
 mkdir -p "${APACHE_WEB_ROOT}" && chown -R "${APACHE_USER}":"${APACHE_GROUP}" "${APACHE_WEB_ROOT}"
 # PID file path
 mkdir -p "${APACHE_PID_FILE%/*}" && chown -R "${APACHE_USER}":"${APACHE_GROUP}" "${APACHE_PID_FILE%/*}"
+echo "Use: '$USE_SSL'"
+# SSL
+if [ "$USE_SSL" = true ]; then
+  echo "~~ Using SSL ~~"
+
+  # Listen on port 443 instead of 80
+  sed -i '/^Listen 80/s/^L/# L/' /etc/apache2/httpd.conf
+  sed -i '/^# Listen 443/s/^# //' /etc/apache2/httpd.conf
+  sed -i '/^#.* ssl_module /s/^#//' /etc/apache2/httpd.conf
+
+  # Use the SSL conf file
+  mv /etc/apache2/conf.d/001-webdav.conf.ssl /etc/apache2/conf.d/001-webdav.conf
+fi
 
 # set apache user and group in config file
 HTTPD_CONF="/etc/apache2/httpd.conf"
